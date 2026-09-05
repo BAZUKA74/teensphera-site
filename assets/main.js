@@ -26,7 +26,6 @@
   var toggleLabel = document.querySelector('.nav-toggle-label');
   var nav = document.querySelector('.mainnav');
   var backdrop = document.getElementById('nav-backdrop');
-  var closeBtn = document.querySelector('.nav-close');
 
   function setMenu(open) {
     nav.classList.toggle('open', open);
@@ -48,7 +47,6 @@
     toggle.addEventListener('click', function () {
       setMenu(!nav.classList.contains('open'));
     });
-    if (closeBtn) closeBtn.addEventListener('click', function () { setMenu(false); });
     if (backdrop) backdrop.addEventListener('click', function () { setMenu(false); });
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && nav.classList.contains('open')) setMenu(false);
