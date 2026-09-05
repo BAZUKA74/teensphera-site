@@ -21,14 +21,39 @@
     }, 2200);
   }
 
-  /* Мобильное меню */
+  /* Мобильное меню — выезжающая панель с подложкой */
   var toggle = document.querySelector('.nav-toggle');
+  var toggleLabel = document.querySelector('.nav-toggle-label');
   var nav = document.querySelector('.mainnav');
+  var backdrop = document.getElementById('nav-backdrop');
+  var closeBtn = document.querySelector('.nav-close');
+
+  function setMenu(open) {
+    nav.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (toggleLabel) toggleLabel.textContent = open ? 'Закрыть' : 'Меню';
+    if (backdrop) {
+      backdrop.hidden = false;
+      backdrop.classList.toggle('open', open);
+      if (!open) {
+        window.setTimeout(function () {
+          if (!nav.classList.contains('open')) backdrop.hidden = true;
+        }, 320);
+      }
+    }
+    document.body.classList.toggle('nav-open', open);
+  }
+
   if (toggle && nav) {
     toggle.addEventListener('click', function () {
-      var open = nav.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      setMenu(!nav.classList.contains('open'));
     });
+    if (closeBtn) closeBtn.addEventListener('click', function () { setMenu(false); });
+    if (backdrop) backdrop.addEventListener('click', function () { setMenu(false); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && nav.classList.contains('open')) setMenu(false);
+    });
+
     nav.querySelectorAll('.has-sub > a').forEach(function (a) {
       a.addEventListener('click', function (e) {
         if (window.innerWidth > 980) return;

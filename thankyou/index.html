@@ -46,9 +46,13 @@
 <header class="site-header">
   <div class="wrap site-header-in">
     <a href="/teensphera-site/" class="logo">TeenSphera</a>
-    <button class="nav-toggle" aria-expanded="false" aria-controls="mainnav-list">Меню</button>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mainnav-list">
+      <span class="nav-toggle-label">Меню</span>
+    </button>
     <a class="btn btn-lime btn-sm header-cta" href="/teensphera-site/#zapis">Записаться</a>
+    <div class="nav-backdrop" id="nav-backdrop" hidden></div>
     <nav class="mainnav" aria-label="Основное меню">
+      <button class="nav-close" type="button" aria-label="Закрыть меню">Закрыть ×</button>
       <ul class="mainnav-list" id="mainnav-list">
         <li class="has-sub">
           <a href="/teensphera-site/inyaz/">Иностранные языки</a>
