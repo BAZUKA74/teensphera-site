@@ -21,48 +21,39 @@
     }, 2200);
   }
 
-  /* Мобильное меню — выезжающая панель с подложкой */
+  /* Accessible drawer and native disclosure navigation. */
   var toggle = document.querySelector('.nav-toggle');
-  var toggleLabel = document.querySelector('.nav-toggle-label');
   var nav = document.querySelector('.mainnav');
   var backdrop = document.getElementById('nav-backdrop');
-
+  var mobile = window.matchMedia('(max-width:760px)');
   function setMenu(open) {
     nav.classList.toggle('open', open);
-    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    if (toggleLabel) toggleLabel.textContent = open ? 'Закрыть' : 'Меню';
-    if (backdrop) {
-      backdrop.hidden = false;
-      backdrop.classList.toggle('open', open);
-      if (!open) {
-        window.setTimeout(function () {
-          if (!nav.classList.contains('open')) backdrop.hidden = true;
-        }, 320);
-      }
-    }
+    toggle.setAttribute('aria-expanded', String(open));
+    backdrop.hidden = !open;
+    backdrop.classList.toggle('open', open);
     document.body.classList.toggle('nav-open', open);
+    nav.inert = mobile.matches && !open;
+    if (open) nav.querySelector('summary').focus();
+    else toggle.focus();
   }
-
-  if (toggle && nav) {
-    toggle.addEventListener('click', function () {
-      setMenu(!nav.classList.contains('open'));
+  if (nav && toggle) {
+    nav.inert = mobile.matches;
+    toggle.addEventListener('click', function(){ setMenu(!nav.classList.contains('open')); });
+    backdrop.addEventListener('click', function(){ setMenu(false); });
+    nav.querySelectorAll('details').forEach(function(d){
+      d.addEventListener('toggle', function(){ if(d.open) nav.querySelectorAll('details').forEach(function(other){ if(other!==d) other.open=false; }); });
     });
-    if (backdrop) backdrop.addEventListener('click', function () { setMenu(false); });
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && nav.classList.contains('open')) setMenu(false);
+    document.addEventListener('click', function(e){ if(!nav.contains(e.target)) nav.querySelectorAll('details').forEach(function(d){ d.open=false; }); });
+    document.addEventListener('keydown', function(e){
+      if(e.key==='Escape') { if(nav.classList.contains('open')) setMenu(false); nav.querySelectorAll('details').forEach(function(d){d.open=false;}); }
+      if(e.key==='Tab' && nav.classList.contains('open')) {
+        var items=Array.from(nav.querySelectorAll('a,summary')).filter(function(el){return el.getClientRects().length;});
+        var first=items[0], last=items[items.length-1];
+        if(e.shiftKey && document.activeElement===first){e.preventDefault();last.focus();}
+        else if(!e.shiftKey && document.activeElement===last){e.preventDefault();first.focus();}
+      }
     });
-
-    nav.querySelectorAll('.has-sub > a').forEach(function (a) {
-      a.addEventListener('click', function (e) {
-        if (window.innerWidth > 980) return;
-        var li = a.parentElement;
-        if (!li.classList.contains('sub-open')) {
-          e.preventDefault();
-          nav.querySelectorAll('.sub-open').forEach(function (o) { o.classList.remove('sub-open'); });
-          li.classList.add('sub-open');
-        }
-      });
-    });
+    mobile.addEventListener('change', function(){setMenu(false);nav.inert=mobile.matches;});
   }
 
   /* Единый список курсов на сайте: если пришли со страницы курса, подставляем его в форму заявки */
@@ -84,7 +75,7 @@
     lead.addEventListener('submit', function (e) {
       e.preventDefault();
       var phone = document.getElementById('phone');
-      alert('Демо-версия формы: заявка пока никуда не отправляется. Нужно подключить приём заявок (CRM, Telegram-бот или почта) — см. пункт 5 в CLAUDE.md.');
+      alert('Онлайн-запись готовится к запуску. Позвоните нам: +7 932 440 65 38.');
       if (phone) phone.focus();
     });
   }
