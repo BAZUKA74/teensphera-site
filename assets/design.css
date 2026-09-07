@@ -65,8 +65,8 @@
 @media(max-width:760px){.logo{font-size:19px;grid-template-columns:36px auto;column-gap:8px}.logo .brand-icon{width:36px;height:36px}.logo-caption{font-size:7px;letter-spacing:1px}.messenger-card{padding:24px}.messenger-card h3{font-size:25px}.messenger-link{padding:16px 18px}}
 
 /* Keep the complete brand symbol inside its white frame. */
-.brand-icon{border-radius:10px}
-.brand-icon img{width:118%;height:118%;left:-10%;top:-8%}
+.brand-icon{border-radius:50%;clip-path:circle(50% at 50% 50%);isolation:isolate}
+.brand-icon img{width:129.55%;height:129.55%;left:-15.98%;top:-14.77%;object-fit:fill}
 .greet{height:1.6em;line-height:1.6;overflow:hidden}
 .greet-track{height:100%;transition:opacity .18s ease,transform .18s ease}
 .greet-track>span{height:100%;line-height:1.6;text-align:left}
