@@ -14,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600;7..72,700&family=Onest:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/teensphera-site/assets/style.css?v=20260907"><link rel="stylesheet" href="/teensphera-site/assets/design.css?v=20260907">
+<link rel="stylesheet" href="/teensphera-site/assets/style.css?v=20260907b"><link rel="stylesheet" href="/teensphera-site/assets/design.css?v=20260907b">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -45,7 +45,7 @@
 </div>
 <header class="site-header">
   <div class="wrap site-header-in">
-    <a href="/teensphera-site/" class="logo"><span class="logo-mark" aria-hidden="true">✳</span> TeenSphera<span class="logo-caption">пространство развития</span></a>
+    <a href="/teensphera-site/" class="logo"><span class="brand-icon" aria-hidden="true"><img src="/teensphera-site/assets/teensphera-logo.jpg" alt="" width="640" height="640"></span> TeenSphera<span class="logo-caption">пространство развития</span></a>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><span aria-hidden="true">☰</span> Меню</button>
     <div class="nav-backdrop" id="nav-backdrop" hidden></div>
     <nav class="mainnav" id="site-nav" aria-label="Основное меню">
@@ -78,91 +78,22 @@
 </section><section class="sec signup" id="zapis">
   <div class="wrap signup-in">
     <div class="signup-copy">
-      <h2>Пробное занятие — бесплатно</h2>
-      <p>Оставьте телефон, администратор перезвонит и подберёт время и группу под возраст и смену в школе.</p>
+      <h2>Начнём знакомство?</h2>
+      <p>Запишитесь на бесплатное пробное занятие в удобном мессенджере.</p>
       <ul>
         <li>Педагог оценит уровень и расскажет, с чего начинать</li>
-        <li>Скидка 10% второму ребёнку из семьи, на следующий курс и семьям участников СВО</li>
-        <li>Работаем ежедневно 9:00–21:00, среда — выходной</li>
+        <li>Два филиала в Сургуте — выберите удобный для вас</li>
+        <li>Работаем с 9:00 до 21:00, среда — выходной</li>
       </ul>
     </div>
-
-    <form id="lead">
-      <div class="field">
-        <label for="phone">Номер телефона <span class="req">*</span></label>
-        <input type="tel" id="phone" name="phone" required placeholder="+7 ___ ___ __ __" autocomplete="tel">
-      </div>
-
-      <div class="field-row">
-        <div class="field">
-          <label for="child">Имя ребёнка</label>
-          <input type="text" id="child" name="child" autocomplete="off">
-        </div>
-        <div class="field">
-          <label for="age">Возраст <span class="req">*</span></label>
-          <input type="number" id="age" name="age" min="3" max="60" required>
-        </div>
-      </div>
-
-      <div class="field">
-        <label for="branch">Филиал <span class="req">*</span></label>
-        <select id="branch" name="branch" required>
-          <option value="">Выберите филиал</option>
-          <option>наб. Ивана Кайдалова, 30 — парк у Саймы</option>
-          <option>ул. Есенина, 6 — район ЖД</option>
-          <option>Пока не решили</option>
-        </select>
-      </div>
-
-      <div class="field">
-        <label for="course">Интересующий курс <span class="req">*</span></label>
-        <select id="course" name="course" required>
-          <option value="">Выберите курс</option>
-          <optgroup label="Языки">
-            <option data-k="english" value="Английский язык">Английский язык</option>
-            <option data-k="chinese" value="Китайский язык">Китайский язык</option>
-            <option data-k="french" value="Французский язык">Французский язык</option>
-            <option data-k="spanish" value="Испанский язык">Испанский язык</option>
-            <option data-k="arabic" value="Арабский язык">Арабский язык</option>
-          </optgroup>
-          <optgroup label="Навыки начальной школы">
-            <option data-k="preschool" value="Подготовка к школе">Подготовка к школе</option>
-            <option data-k="math" value="Математика">Математика</option>
-            <option data-k="mental-math" value="Ментальная арифметика">Ментальная арифметика</option>
-            <option data-k="speed-reading" value="Скорочтение">Скорочтение</option>
-            <option data-k="calligraphy" value="Каллиграфия">Каллиграфия</option>
-          </optgroup>
-          <optgroup label="Музыка и творчество">
-            <option data-k="vocal" value="Вокал">Вокал</option>
-            <option data-k="piano" value="Пианино">Пианино</option>
-            <option data-k="drawing" value="Рисование">Рисование</option>
-            <option data-k="handicraft" value="Рукоделие">Рукоделие</option>
-            <option data-k="theatre" value="Театральная студия">Театральная студия</option>
-          </optgroup>
-          <optgroup label="Лето">
-            <option data-k="camp" value="Летний лагерь">Летний лагерь</option>
-            <option data-k="china-trip" value="Поездка в Китай">Поездка в Китай</option>
-          </optgroup>
-        </select>
-      </div>
-
-      <div class="field">
-        <label for="shift">Смена в школе</label>
-        <select id="shift" name="shift">
-          <option value="">Не важно / ещё не школьник</option>
-          <option>Первая</option>
-          <option>Вторая</option>
-        </select>
-      </div>
-
-      <label class="consent">
-        <input type="checkbox" required id="consent">
-        <span>Даю согласие на <a href="/teensphera-site/privacy/">обработку персональных данных</a></span>
-      </label>
-
-      <button type="submit" class="btn btn-lime">Записаться на пробное</button>
-      <p class="form-note">Для записи сейчас позвоните: +7 932 440 65 38. Онлайн-форма готовится к запуску.</p>
-    </form>
+    <div class="messenger-card">
+      <span class="messenger-kicker">ЗАПИСЬ НА ЗАНЯТИЯ</span>
+      <h3>Продолжим в мессенджере</h3>
+      <p>Выберите Telegram или MAX — кнопка откроет бота TeenSphera.</p>
+      <a class="messenger-link telegram" href="https://t.me/TeenSphera_bot" target="_blank" rel="noopener noreferrer"><span>Telegram<small>@TeenSphera_bot</small></span><span aria-hidden="true">↗</span></a>
+      <a class="messenger-link max" href="https://max.ru/id860203842370_bot" target="_blank" rel="noopener noreferrer"><span>MAX<small>Бот образовательного центра</small></span><span aria-hidden="true">↗</span></a>
+      <p class="messenger-phone">Удобнее позвонить? <a href="tel:+79324406538">+7 932 440 65 38</a></p>
+    </div>
   </div>
 </section><section class="sec">
   <div class="wrap">
@@ -185,10 +116,12 @@
   <div class="wrap">
     <div class="foot-grid">
       <div>
-        <div class="foot-brand">TeenSphera</div>
+        <div class="foot-brand"><span class="brand-icon" aria-hidden="true"><img src="/teensphera-site/assets/teensphera-logo.jpg" alt="" width="640" height="640"></span><span>TeenSphera</span></div>
         <p>Образовательный центр в Сургуте.<br>Работаем с 2012 года.</p>
         <a href="tel:+79324406538">+7 932 440 65 38</a>
         <a href="mailto:kamtim@mail.ru">kamtim@mail.ru</a>
+        <a href="https://t.me/TeenSphera_bot" target="_blank" rel="noopener noreferrer">Telegram · @TeenSphera_bot ↗</a>
+        <a href="https://max.ru/id860203842370_bot" target="_blank" rel="noopener noreferrer">Написать в MAX ↗</a>
       </div>
       <div>
         <h4>Иностранные языки</h4>
@@ -237,6 +170,6 @@
     </div>
   </div>
 </footer>
-<script src="/teensphera-site/assets/main.js?v=20260907"></script>
+<script src="/teensphera-site/assets/main.js?v=20260907b"></script>
 </body>
 </html>

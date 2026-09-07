@@ -56,35 +56,4 @@
     mobile.addEventListener('change', function(){setMenu(false);nav.inert=mobile.matches;});
   }
 
-  /* Единый список курсов на сайте: если пришли со страницы курса, подставляем его в форму заявки */
-  var courseSelect = document.getElementById('course');
-  if (courseSelect) {
-    var params = new URLSearchParams(window.location.search);
-    var key = params.get('course');
-    if (key) {
-      var opt = courseSelect.querySelector('option[data-k="' + key + '"]');
-      if (opt) {
-        courseSelect.value = opt.value;
-      }
-    }
-  }
-
-  /* Заявка: демо-обработчик. Реальная интеграция (CRM/Telegram/почта) — отдельная задача, см. CLAUDE.md */
-  var lead = document.getElementById('lead');
-  if (lead) {
-    lead.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var phone = document.getElementById('phone');
-      alert('Онлайн-запись готовится к запуску. Позвоните нам: +7 932 440 65 38.');
-      if (phone) phone.focus();
-    });
-  }
-
-  var lead2 = document.getElementById('lead-2');
-  if (lead2) {
-    lead2.addEventListener('submit', function (e) {
-      e.preventDefault();
-      alert('Демо-версия формы: заявка пока никуда не отправляется.');
-    });
-  }
 })();
