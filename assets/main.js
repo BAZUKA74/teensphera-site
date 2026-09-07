@@ -1,24 +1,26 @@
 (function () {
   'use strict';
 
-  /* Приветствия в шапке — только на главной, единственная анимация на сайте */
+  /* A single visible greeting avoids adjacent glyphs leaking into the line. */
   var track = document.querySelector('.greet-track');
-  if (track && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    var total = track.children.length; // последний дублирует первый
-    var i = 0;
-    track.style.transform = 'translateY(0)';
-    setInterval(function () {
-      i++;
-      track.style.transition = 'transform .55s cubic-bezier(.66,0,.2,1)';
-      track.style.transform = 'translateY(-' + (i * (100 / total)) + '%)';
-      if (i === total - 1) {
-        setTimeout(function () {
-          track.style.transition = 'none';
-          track.style.transform = 'translateY(0)';
-          i = 0;
-        }, 600);
-      }
-    }, 2200);
+  if (track) {
+    var words = Array.from(track.children).slice(0, -1).map(function(el){return {text:el.textContent,lang:el.lang || 'ru'};});
+    var greeting = document.createElement('span');
+    greeting.textContent = words[0].text;
+    greeting.lang = words[0].lang;
+    track.replaceChildren(greeting);
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      var i = 0;
+      setInterval(function(){
+        track.classList.add('greet-changing');
+        setTimeout(function(){
+          i = (i + 1) % words.length;
+          greeting.textContent = words[i].text;
+          greeting.lang = words[i].lang;
+          track.classList.remove('greet-changing');
+        }, 180);
+      }, 2600);
+    }
   }
 
   /* Accessible drawer and native disclosure navigation. */

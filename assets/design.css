@@ -63,3 +63,11 @@
 .messenger-link.max{background:var(--lime);color:var(--ink)}.messenger-link.max:hover{background:var(--lime-hi)}
 .messenger-card .messenger-phone{font-size:12px;margin:23px 0 0}.messenger-phone a{display:inline-block;color:var(--violet);font-weight:600;text-underline-offset:3px}
 @media(max-width:760px){.logo{font-size:19px;grid-template-columns:36px auto;column-gap:8px}.logo .brand-icon{width:36px;height:36px}.logo-caption{font-size:7px;letter-spacing:1px}.messenger-card{padding:24px}.messenger-card h3{font-size:25px}.messenger-link{padding:16px 18px}}
+
+/* Keep the complete brand symbol inside its white frame. */
+.brand-icon{border-radius:10px}
+.brand-icon img{width:118%;height:118%;left:-10%;top:-8%}
+.greet{height:1.6em;line-height:1.6;overflow:hidden}
+.greet-track{height:100%;transition:opacity .18s ease,transform .18s ease}
+.greet-track>span{height:100%;line-height:1.6;text-align:left}
+.greet-track.greet-changing{opacity:0;transform:translateY(3px)}
